@@ -1,10 +1,14 @@
 # ⚡ PV Energy Tracker
 
+<p align="center">
+  <img src="public/logo.png" alt="bavarian-dataforge" width="150" />
+</p>
+
 **Interactive dashboard for photovoltaic systems with battery storage**
 
 A reactive web dashboard for analyzing and optimizing your solar energy setup. Calculates self-sufficiency rate, self-consumption ratio, net electricity costs, and visualizes all energy flows in real time.
 
-![Version](https://img.shields.io/badge/Version-0.3.0-06b6d4)
+![Version](https://img.shields.io/badge/Version-0.4.0-06b6d4)
 ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)
 ![Recharts](https://img.shields.io/badge/Recharts-2-22B5BF)
@@ -63,6 +67,8 @@ pv-energie-tracker/
 ├── index.html              # HTML entry point
 ├── package.json            # Dependencies & scripts
 ├── vite.config.js          # Vite configuration
+├── public/
+│   └── logo.png            # bavarian-dataforge logo
 ├── src/
 │   ├── main.jsx            # React entry + global styles
 │   └── PVDashboard.jsx     # Main dashboard component
@@ -141,6 +147,7 @@ The current version is displayed in the app header, footer, and in `package.json
 
 | Version | Date | Changes |
 |---------|------|---------|
+| 0.4.0 | 2026-05-25 | Added bavarian-dataforge logo to header, footer, favicon, and README |
 | 0.3.0 | 2026-05-25 | Clean project structure with correct `src/` layout, English README, prerequisites documented |
 | 0.2.0 | 2026-05-25 | Added SVG logo, version badge in header/footer, author credits, changelog, license changed to CC BY-NC-SA 4.0 |
 | 0.1.0 | 2026-05-25 | Initial release — interactive dashboard with 3 tabs (Dashboard, System, Monthly Data), 5 chart types, editable monthly inputs, KPI cards, cost calculation |

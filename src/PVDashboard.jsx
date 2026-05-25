@@ -5,25 +5,18 @@ import {
   Area, AreaChart, ComposedChart, ReferenceLine
 } from "recharts";
 
-const APP_VERSION = "0.3.0";
+const APP_VERSION = "0.4.0";
 const APP_NAME = "PV Energie-Tracker";
 
-function SolarLogo({ size = 32 }) {
+function BFLogo({ size = 40 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="32" cy="26" r="12" fill="#facc15" opacity="0.9"/>
-      {[0,45,90,135,180,225,270,315].map((angle, i) => (
-        <line key={i} x1="32" y1="26" x2={32 + 20*Math.cos(angle*Math.PI/180)} y2={26 + 20*Math.sin(angle*Math.PI/180)}
-          stroke="#facc15" strokeWidth="2" strokeLinecap="round" opacity="0.5"/>
-      ))}
-      <path d="M16 42 L24 34 L40 34 L48 42 Z" fill="#3b82f6" opacity="0.85"/>
-      <line x1="28" y1="34" x2="24" y2="42" stroke="#1e293b" strokeWidth="1"/>
-      <line x1="36" y1="34" x2="40" y2="42" stroke="#1e293b" strokeWidth="1"/>
-      <line x1="17" y1="38" x2="47" y2="38" stroke="#1e293b" strokeWidth="1"/>
-      <rect x="20" y="48" width="24" height="10" rx="2" fill="#8b5cf6" opacity="0.8"/>
-      <rect x="22" y="50" width="8" height="6" rx="1" fill="#a78bfa" opacity="0.6"/>
-      <rect x="32" y="50" width="5" height="6" rx="1" fill="#a78bfa" opacity="0.4"/>
-    </svg>
+    <img
+      src="/logo.png"
+      alt="bavarian-dataforge"
+      width={size}
+      height={size}
+      style={{ borderRadius: 8, objectFit: "contain" }}
+    />
   );
 }
 
@@ -215,7 +208,7 @@ export default function PVDashboard() {
       }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:12 }}>
           <div style={{ display:"flex", alignItems:"center", gap:14 }}>
-            <SolarLogo size={40} />
+            <BFLogo size={40} />
             <div>
               <div style={{ display:"flex", alignItems:"center", gap:10 }}>
                 <h1 style={{ margin:0, fontSize:20, fontWeight:700, letterSpacing:0.5 }}>
@@ -489,7 +482,7 @@ export default function PVDashboard() {
       }}>
         <div style={{ maxWidth:1200, margin:"0 auto", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:12 }}>
           <div style={{ display:"flex", alignItems:"center", gap:10 }}>
-            <SolarLogo size={24} />
+            <BFLogo size={24} />
             <div>
               <div style={{ fontSize:13, color:C.text, fontWeight:600 }}>
                 {APP_NAME}

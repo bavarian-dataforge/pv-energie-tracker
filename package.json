@@ -1,6 +1,6 @@
 {
   "name": "pv-energie-tracker",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Interactive PV energy dashboard for solar systems with battery storage. Calculates self-sufficiency, self-consumption, costs and revenues with live charts.",
   "author": "Florian Englmeier (bavarian-dataforge)",
   "license": "CC-BY-NC-SA-4.0",

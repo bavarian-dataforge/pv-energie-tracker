@@ -4,7 +4,7 @@
 
 A reactive web dashboard for analyzing and optimizing your solar energy setup. Calculates self-sufficiency rate, self-consumption ratio, net electricity costs, and visualizes all energy flows in real time.
 
-![Version](https://img.shields.io/badge/Version-0.2.0-06b6d4)
+![Version](https://img.shields.io/badge/Version-0.3.0-06b6d4)
 ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)
 ![Recharts](https://img.shields.io/badge/Recharts-2-22B5BF)
@@ -25,6 +25,13 @@ A reactive web dashboard for analyzing and optimizing your solar energy setup. C
 - **📱 Responsive** — Works on desktop and mobile devices
 
 ## 🚀 Quick Start
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- npm (comes with Node.js)
+
+### Installation
 
 ```bash
 # Clone repository
@@ -60,8 +67,11 @@ pv-energie-tracker/
 │   ├── main.jsx            # React entry + global styles
 │   └── PVDashboard.jsx     # Main dashboard component
 ├── LICENSE                 # CC BY-NC-SA 4.0
+├── .gitignore
 └── README.md
 ```
+
+> **Important:** The source files `main.jsx` and `PVDashboard.jsx` must be inside the `src/` folder. Vite expects `index.html` to reference `/src/main.jsx` as the entry point. If these files are placed in the root directory, the app will show a blank white page.
 
 ## 🔧 Default Configuration
 
@@ -131,7 +141,8 @@ The current version is displayed in the app header, footer, and in `package.json
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 0.2.0 | 2026-05-25 | Added SVG logo, version badge in header/footer, author credits, changelog, English README, license changed to CC BY-NC-SA 4.0 |
+| 0.3.0 | 2026-05-25 | Clean project structure with correct `src/` layout, English README, prerequisites documented |
+| 0.2.0 | 2026-05-25 | Added SVG logo, version badge in header/footer, author credits, changelog, license changed to CC BY-NC-SA 4.0 |
 | 0.1.0 | 2026-05-25 | Initial release — interactive dashboard with 3 tabs (Dashboard, System, Monthly Data), 5 chart types, editable monthly inputs, KPI cards, cost calculation |
 
 ## 📝 License

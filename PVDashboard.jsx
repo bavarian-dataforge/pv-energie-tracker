@@ -5,7 +5,7 @@ import {
   Area, AreaChart, ComposedChart, ReferenceLine
 } from "recharts";
 
-const APP_VERSION = "1.0.0";
+const APP_VERSION = "0.2.0";
 const APP_NAME = "PV Energie-Tracker";
 
 function SolarLogo({ size = 32 }) {

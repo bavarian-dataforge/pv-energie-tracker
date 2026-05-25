@@ -1,6 +1,6 @@
 {
   "name": "pv-energie-tracker",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "Interaktives PV-Energie-Dashboard für Solaranlagen mit Batteriespeicher. Berechnet Autarkiegrad, Eigenverbrauchsquote, Kosten und Erlöse mit Live-Diagrammen.",
   "author": "bavarian-dataforge",
   "license": "CC-BY-NC-SA-4.0",

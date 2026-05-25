@@ -5,7 +5,7 @@ import {
   Area, AreaChart, ComposedChart, ReferenceLine
 } from "recharts";
 
-const APP_VERSION = "0.4.0";
+const APP_VERSION = "0.4.1";
 const APP_NAME = "PV Energie-Tracker";
 
 function BFLogo({ size = 40 }) {
@@ -56,8 +56,8 @@ function NumberInput({ value, onChange, unit, min = 0, max = 99999, step = 1 }) 
         type="number" value={value} min={min} max={max} step={step}
         onChange={e => onChange(parseFloat(e.target.value) || 0)}
         style={{
-          width: 80, padding:"6px 8px", background:C.inputBg, border:`1px solid ${C.inputBorder}`,
-          borderRadius:6, color:C.accent, fontSize:13, fontFamily:"'JetBrains Mono',monospace",
+          width: 100, padding:"6px 10px", background:C.inputBg, border:`1px solid ${C.inputBorder}`,
+          borderRadius:6, color:C.accent, fontSize:14, fontFamily:"'JetBrains Mono',monospace",
           textAlign:"right", outline:"none",
         }}
         onFocus={e => e.target.style.borderColor = C.inputFocus}
@@ -346,7 +346,7 @@ export default function PVDashboard() {
               <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(280px, 1fr))", gap:16 }}>
                 {[
                   { label:"PV-Leistung", key:"pvKwp", unit:"kWp", step:0.1, hint:"Nennleistung deiner Module" },
-                  { label:"Spez. Jahresertrag", key:"specYield", unit:"kWh/kWp", step:10, hint:"Wien ~1050, Süd-AT ~1150" },
+                  { label:"Spez. Jahresertrag", key:"specYield", unit:"kWh/kWp", step:10, hint:"Fichtelgebirge ~950, Süd-DE ~1100" },
                   { label:"Degradation/Jahr", key:"degradation", unit:"%", step:0.1, hint:"Typisch 0,5% p.a." },
                   { label:"Anlagenalter", key:"age", unit:"Jahre", step:1, hint:"Für Ertragsberechnung" },
                 ].map(p => (
@@ -425,15 +425,15 @@ export default function PVDashboard() {
                       <td style={{ padding:"8px", fontWeight:600, color:C.text, position:"sticky", left:0, background: i % 2 === 0 ? C.card : C.cardHover, zIndex:1 }}>{m.fullName}</td>
                       <td style={{ padding:"4px 6px" }}>
                         <input type="number" value={monthly[i].pvErtrag} onChange={e => updateMonth(i, "pvErtrag", parseInt(e.target.value)||0)}
-                          style={{ width:70, padding:"4px 6px", background:C.inputBg, border:`1px solid ${C.inputBorder}`, borderRadius:4, color:C.solar, fontSize:12, textAlign:"right", fontFamily:"'JetBrains Mono',monospace" }} />
+                          style={{ width:80, padding:"4px 8px", background:C.inputBg, border:`1px solid ${C.inputBorder}`, borderRadius:4, color:C.solar, fontSize:12, textAlign:"right", fontFamily:"'JetBrains Mono',monospace" }} />
                       </td>
                       <td style={{ padding:"4px 6px" }}>
                         <input type="number" value={monthly[i].verbrauch} onChange={e => updateMonth(i, "verbrauch", parseInt(e.target.value)||0)}
-                          style={{ width:70, padding:"4px 6px", background:C.inputBg, border:`1px solid ${C.inputBorder}`, borderRadius:4, color:C.consumption, fontSize:12, textAlign:"right", fontFamily:"'JetBrains Mono',monospace" }} />
+                          style={{ width:80, padding:"4px 8px", background:C.inputBg, border:`1px solid ${C.inputBorder}`, borderRadius:4, color:C.consumption, fontSize:12, textAlign:"right", fontFamily:"'JetBrains Mono',monospace" }} />
                       </td>
                       <td style={{ padding:"4px 6px" }}>
                         <input type="number" value={monthly[i].speicherLadung} onChange={e => updateMonth(i, "speicherLadung", parseInt(e.target.value)||0)}
-                          style={{ width:70, padding:"4px 6px", background:C.inputBg, border:`1px solid ${C.inputBorder}`, borderRadius:4, color:C.battery, fontSize:12, textAlign:"right", fontFamily:"'JetBrains Mono',monospace" }} />
+                          style={{ width:80, padding:"4px 8px", background:C.inputBg, border:`1px solid ${C.inputBorder}`, borderRadius:4, color:C.battery, fontSize:12, textAlign:"right", fontFamily:"'JetBrains Mono',monospace" }} />
                       </td>
                       {[m.entladung, m.netzbezug, m.einspeisung, m.eigenverbrauch].map((v, j) => (
                         <td key={j} style={{ padding:"8px 6px", textAlign:"right", color:C.textDim, fontFamily:"'JetBrains Mono',monospace" }}>{fmt(v)}</td>

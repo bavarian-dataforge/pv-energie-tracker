@@ -5,6 +5,32 @@ import {
   Area, AreaChart, ComposedChart, ReferenceLine
 } from "recharts";
 
+const APP_VERSION = "1.0.0";
+const APP_NAME = "PV Energie-Tracker";
+
+function SolarLogo({ size = 32 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Sun circle */}
+      <circle cx="32" cy="26" r="12" fill="#facc15" opacity="0.9"/>
+      {/* Sun rays */}
+      {[0,45,90,135,180,225,270,315].map((angle, i) => (
+        <line key={i} x1="32" y1="26" x2={32 + 20*Math.cos(angle*Math.PI/180)} y2={26 + 20*Math.sin(angle*Math.PI/180)}
+          stroke="#facc15" strokeWidth="2" strokeLinecap="round" opacity="0.5"/>
+      ))}
+      {/* Solar panel */}
+      <path d="M16 42 L24 34 L40 34 L48 42 Z" fill="#3b82f6" opacity="0.85"/>
+      <line x1="28" y1="34" x2="24" y2="42" stroke="#1e293b" strokeWidth="1"/>
+      <line x1="36" y1="34" x2="40" y2="42" stroke="#1e293b" strokeWidth="1"/>
+      <line x1="17" y1="38" x2="47" y2="38" stroke="#1e293b" strokeWidth="1"/>
+      {/* Battery */}
+      <rect x="20" y="48" width="24" height="10" rx="2" fill="#8b5cf6" opacity="0.8"/>
+      <rect x="22" y="50" width="8" height="6" rx="1" fill="#a78bfa" opacity="0.6"/>
+      <rect x="32" y="50" width="5" height="6" rx="1" fill="#a78bfa" opacity="0.4"/>
+    </svg>
+  );
+}
+
 const MONTHS = ["Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
 const MONTHS_FULL = ["Jänner","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
 const PV_FACTORS = [0.03,0.05,0.08,0.11,0.13,0.14,0.14,0.12,0.09,0.06,0.03,0.02];
@@ -188,16 +214,26 @@ export default function PVDashboard() {
       {/* Header */}
       <div style={{
         background: `linear-gradient(135deg, ${C.card} 0%, #0c1528 100%)`,
-        borderBottom: `1px solid ${C.border}`, padding: "20px 24px",
+        borderBottom: `1px solid ${C.border}`, padding: "16px 24px",
         position:"sticky", top:0, zIndex:10,
       }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:12 }}>
-          <div>
-            <h1 style={{ margin:0, fontSize:20, fontWeight:700, letterSpacing:0.5 }}>
-              ⚡ PV Energie-Tracker
-            </h1>
-            <div style={{ fontSize:12, color:C.textMuted, marginTop:4 }}>
-              {sys.pvKwp} kWp · {sys.batteryKwh} kWh Speicher · Victron MultiPlus ESS
+          <div style={{ display:"flex", alignItems:"center", gap:14 }}>
+            <SolarLogo size={40} />
+            <div>
+              <div style={{ display:"flex", alignItems:"center", gap:10 }}>
+                <h1 style={{ margin:0, fontSize:20, fontWeight:700, letterSpacing:0.5 }}>
+                  {APP_NAME}
+                </h1>
+                <span style={{
+                  fontSize:10, fontWeight:600, padding:"2px 8px", borderRadius:20,
+                  background:`${C.accent}22`, color:C.accent, border:`1px solid ${C.accent}44`,
+                  fontFamily:"'JetBrains Mono',monospace", letterSpacing:0.5,
+                }}>v{APP_VERSION}</span>
+              </div>
+              <div style={{ fontSize:12, color:C.textMuted, marginTop:3 }}>
+                {sys.pvKwp} kWp · {sys.batteryKwh} kWh Speicher · Victron MultiPlus ESS
+              </div>
             </div>
           </div>
           <div style={{ display:"flex", gap:4, background:C.inputBg, borderRadius:10, padding:4 }}>
@@ -447,6 +483,43 @@ export default function PVDashboard() {
           </Section>
         )}
       </div>
+
+      {/* Footer */}
+      <footer style={{
+        borderTop: `1px solid ${C.border}`,
+        padding: "20px 24px",
+        marginTop: 20,
+        background: `linear-gradient(135deg, ${C.card} 0%, #0c1528 100%)`,
+      }}>
+        <div style={{ maxWidth:1200, margin:"0 auto", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:12 }}>
+          <div style={{ display:"flex", alignItems:"center", gap:10 }}>
+            <SolarLogo size={24} />
+            <div>
+              <div style={{ fontSize:13, color:C.text, fontWeight:600 }}>
+                {APP_NAME}
+              </div>
+              <div style={{ fontSize:11, color:C.textMuted }}>
+                von <a href="https://github.com/bavarian-dataforge" target="_blank" rel="noopener noreferrer"
+                  style={{ color:C.accent, textDecoration:"none" }}>Florian Englmeier</a> · bavarian-dataforge
+              </div>
+            </div>
+          </div>
+          <div style={{ display:"flex", alignItems:"center", gap:16 }}>
+            <a href="https://github.com/bavarian-dataforge/pv-energie-tracker" target="_blank" rel="noopener noreferrer"
+              style={{ fontSize:11, color:C.textMuted, textDecoration:"none", display:"flex", alignItems:"center", gap:4 }}>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+              GitHub
+            </a>
+            <span style={{
+              fontSize:10, color:C.textMuted, padding:"2px 8px", borderRadius:20,
+              border:`1px solid ${C.border}`, fontFamily:"'JetBrains Mono',monospace",
+            }}>v{APP_VERSION}</span>
+            <span style={{ fontSize:10, color:C.textMuted }}>
+              CC BY-NC-SA 4.0
+            </span>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

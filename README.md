@@ -7,7 +7,7 @@ Ein reaktives Web-Dashboard zur Analyse und Optimierung deiner PV-Anlage. Berech
 ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)
 ![Recharts](https://img.shields.io/badge/Recharts-2-22B5BF)
-![License](https://img.shields.io/badge/License-MIT-green)
+![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey)
 
 ---
 
@@ -115,7 +115,7 @@ Pull Requests und Issues sind willkommen! Ideen für Erweiterungen:
 
 ## 📝 Lizenz
 
-MIT — siehe [LICENSE](LICENSE).
+CC BY-NC-SA 4.0 — siehe [LICENSE](LICENSE). Privat nutzen: ja. Kommerziell verkaufen: nein.
 
 ---
 

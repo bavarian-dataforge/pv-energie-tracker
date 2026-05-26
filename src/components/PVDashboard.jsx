@@ -6,7 +6,7 @@ import {
   Area, AreaChart, ComposedChart, ReferenceLine
 } from "recharts";
 
-const APP_VERSION = "0.4.3";
+const APP_VERSION = "0.4.4";
 const APP_NAME = "PV Energie-Tracker";
 
 function BFLogo({ size = 40 }) {

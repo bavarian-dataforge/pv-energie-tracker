@@ -148,7 +148,7 @@ The current version is displayed in the app header, footer, and in `package.json
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 0.4.4 | 2026-05-26 | Project Structure und Changelog aktualisiert für v0.4.4 |
+| 0.4.4 | 2026-05-26 | Project Structure und Changelog to v0.4.4 |
 | 0.4.0 | 2026-05-25 | Added bavarian-dataforge logo to header, footer, favicon, and README |
 | 0.3.0 | 2026-05-25 | Clean project structure with correct `src/` layout, English README, prerequisites documented |
 | 0.2.0 | 2026-05-25 | Added SVG logo, version badge in header/footer, author credits, changelog, license changed to CC BY-NC-SA 4.0 |

@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import PVDashboard from './PVDashboard.jsx'
+import PVDashboard from "./components/PVDashboard";
 
 const style = document.createElement('style')
 style.textContent = `
@@ -22,7 +22,11 @@ style.textContent = `
   }
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
-    opacity: 1;
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
   }
   input:focus {
     outline: none;

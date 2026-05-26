@@ -1,3 +1,4 @@
+import logoImage from "../assets/logo.png";
 import { useState, useMemo, useCallback } from "react";
 import {
   BarChart, Bar, LineChart, Line, PieChart, Pie, Cell,
@@ -5,13 +6,13 @@ import {
   Area, AreaChart, ComposedChart, ReferenceLine
 } from "recharts";
 
-const APP_VERSION = "0.4.1";
+const APP_VERSION = "0.4.3";
 const APP_NAME = "PV Energie-Tracker";
 
 function BFLogo({ size = 40 }) {
   return (
     <img
-      src="/logo.png"
+      src={logoImage}
       alt="bavarian-dataforge"
       width={size}
       height={size}
@@ -51,7 +52,7 @@ const initMonthly = (sys) => {
 
 function NumberInput({ value, onChange, unit, min = 0, max = 99999, step = 1 }) {
   return (
-    <div style={{ display:"flex", alignItems:"center", gap:4 }}>
+    <div style={{ display:"flex", alignItems:"center", gap:6 }}>
       <input
         type="number" value={value} min={min} max={max} step={step}
         onChange={e => onChange(parseFloat(e.target.value) || 0)}
@@ -63,7 +64,7 @@ function NumberInput({ value, onChange, unit, min = 0, max = 99999, step = 1 }) 
         onFocus={e => e.target.style.borderColor = C.inputFocus}
         onBlur={e => e.target.style.borderColor = C.inputBorder}
       />
-      {unit && <span style={{ fontSize:11, color:C.textMuted }}>{unit}</span>}
+      {unit && <span style={{ fontSize:12, color:C.textMuted }}>{unit}</span>}
     </div>
   );
 }
@@ -408,11 +409,11 @@ export default function PVDashboard() {
               <table style={{ width:"100%", borderCollapse:"separate", borderSpacing:0, fontSize:12 }}>
                 <thead>
                   <tr>
-                    {["Monat","PV-Ertrag","Verbrauch","Speicher ↑","Speicher ↓","Netzbezug","Einspeisung","Eigenverbr.","Autarkie","EV-Quote","Kosten","Erlös","Netto"].map((h, i) => (
+                    {["Monat","PV-Ertrag\nkWh","Verbrauch\nkWh","Speicher ↑\nkWh","Speicher ↓\nkWh","Netzbezug\nkWh","Einspeisung\nkWh","Eigenverbr.\nkWh","Autarkie\n%","EV-Quote\n%","Kosten\n€","Erlös\n€","Netto\n€"].map((h, i) => (
                       <th key={i} style={{
                         padding:"10px 8px", background:C.border, color:C.text,
                         textAlign: i === 0 ? "left" : "right", fontWeight:600,
-                        borderBottom:`2px solid ${C.accent}`, whiteSpace:"nowrap",
+                        borderBottom:`2px solid ${C.accent}`, whiteSpace:"pre-line", lineHeight:"1.3",
                         position: i === 0 ? "sticky" : undefined, left: i === 0 ? 0 : undefined,
                         zIndex: i === 0 ? 2 : undefined,
                       }}>{h}</th>
@@ -425,15 +426,15 @@ export default function PVDashboard() {
                       <td style={{ padding:"8px", fontWeight:600, color:C.text, position:"sticky", left:0, background: i % 2 === 0 ? C.card : C.cardHover, zIndex:1 }}>{m.fullName}</td>
                       <td style={{ padding:"4px 6px" }}>
                         <input type="number" value={monthly[i].pvErtrag} onChange={e => updateMonth(i, "pvErtrag", parseInt(e.target.value)||0)}
-                          style={{ width:80, padding:"4px 8px", background:C.inputBg, border:`1px solid ${C.inputBorder}`, borderRadius:4, color:C.solar, fontSize:12, textAlign:"right", fontFamily:"'JetBrains Mono',monospace" }} />
+                          style={{ width:75, padding:"4px 8px", background:C.inputBg, border:`1px solid ${C.inputBorder}`, borderRadius:4, color:C.solar, fontSize:12, textAlign:"right", fontFamily:"'JetBrains Mono',monospace" }} />
                       </td>
                       <td style={{ padding:"4px 6px" }}>
                         <input type="number" value={monthly[i].verbrauch} onChange={e => updateMonth(i, "verbrauch", parseInt(e.target.value)||0)}
-                          style={{ width:80, padding:"4px 8px", background:C.inputBg, border:`1px solid ${C.inputBorder}`, borderRadius:4, color:C.consumption, fontSize:12, textAlign:"right", fontFamily:"'JetBrains Mono',monospace" }} />
+                          style={{ width:75, padding:"4px 8px", background:C.inputBg, border:`1px solid ${C.inputBorder}`, borderRadius:4, color:C.consumption, fontSize:12, textAlign:"right", fontFamily:"'JetBrains Mono',monospace" }} />
                       </td>
                       <td style={{ padding:"4px 6px" }}>
                         <input type="number" value={monthly[i].speicherLadung} onChange={e => updateMonth(i, "speicherLadung", parseInt(e.target.value)||0)}
-                          style={{ width:80, padding:"4px 8px", background:C.inputBg, border:`1px solid ${C.inputBorder}`, borderRadius:4, color:C.battery, fontSize:12, textAlign:"right", fontFamily:"'JetBrains Mono',monospace" }} />
+                          style={{ width:75, padding:"4px 8px", background:C.inputBg, border:`1px solid ${C.inputBorder}`, borderRadius:4, color:C.battery, fontSize:12, textAlign:"right", fontFamily:"'JetBrains Mono',monospace" }} />
                       </td>
                       {[m.entladung, m.netzbezug, m.einspeisung, m.eigenverbrauch].map((v, j) => (
                         <td key={j} style={{ padding:"8px 6px", textAlign:"right", color:C.textDim, fontFamily:"'JetBrains Mono',monospace" }}>{fmt(v)}</td>
